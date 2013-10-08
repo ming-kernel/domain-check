@@ -41,6 +41,8 @@ app/models/host_service.rb
 
 app/models/whois_service.rb
 
+app/modles/domain.rb
+
 spec/*
 
 ####Run test
