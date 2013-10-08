@@ -18,7 +18,7 @@ http://domain-check.herokuapp.com/api/v1/host/www.strikingly.com
 
 
 | Resource       | Description | Success | Fail |
-| ------------- |:-------------:| -------:|
+| ------------- |:-------------:| -------:|:-----|
 | GET /api/v1/whois/:id      | :id is domain name like "strikingly.com"| {'response': {xxx}}| status: 404 {'error': xxx}|
 | GET /api/v1/host/:id       | :id is domain name like "strikingly.com" | {'response': {xxx}} | status: 404 {'error': xxx}|
 
