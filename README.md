@@ -1,15 +1,26 @@
 demo: 
 
-http://domain-check.herokuapp.com/api/v1/whois/google.com
+http://domain-check.herokuapp.com/api/v1/whois/strikingly.com
 
+http://domain-check.herokuapp.com/api/v1/whois/www.strikingly.com
+
+http://domain-check.herokuapp.com/api/v1/host/strikingly.com
+
+http://domain-check.herokuapp.com/api/v1/host/www.strikingly.com
+
+
+**ruby-2.0.0-p247**
+
+
+**Rails 4.0.0**
 
 ###REST API v1 Resources
 
 
-| Resource       | Description |
-| ------------- |:-------------:| 
-| GET /api/v1/whois/:id      | :id is domain name like "strikingly.com" |
-| GET /api/v1/host/:id       | :id is domain name like "strikingly.com" |
+| Resource       | Description | Success | Fail |
+| ------------- |:-------------:| -------:|
+| GET /api/v1/whois/:id      | :id is domain name like "strikingly.com"| {'response': {xxx}}| status: 404 {'error': xxx}|
+| GET /api/v1/host/:id       | :id is domain name like "strikingly.com" | {'response': {xxx}} | status: 404 {'error': xxx}|
 
 
 
@@ -24,3 +35,7 @@ app/models/host_service.rb
 app/models/whois_service.rb
 
 spec/*
+
+####Run test
+
+`rspec`

@@ -9,6 +9,17 @@ describe "whois api" do
     json['response']['nameservers'].length.should > 0
   end
 
+  it 'strikingly.com and www.strikingly.com' do
+    get 'api/v1/whois/strikingly.com'
+    response.should be_success
+    r1 = json['response']
+
+    get 'api/v1/whois/www.strikingly.com'
+    response.should be_success
+    r2 = json['response']
+    r1.should eq(r2)
+  end
+
   it 'dijfoifkskfjjdoijfisjdklfnksljdfkljs.com' do
     get 'api/v1/whois/dijfoifkskfjjdoijfisjdklfnksljdfkljs.com'
     response.should be_not_found
