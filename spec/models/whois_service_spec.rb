@@ -1,6 +1,19 @@
 require 'spec_helper'
 
 describe WhoisService do
+
+  it 'news.sina.com.cn ==> sina.com.cn' do
+    name = 'news.sina.com.cn'
+    domain = WhoisService.root_domain(name)
+    domain.should == 'sina.com.cn'
+  end
+
+  it 'www.strikingly.com ==> strikingly.com' do
+    name = 'www.strikingly.com'
+    domain = WhoisService.root_domain(name)
+    domain.should == 'strikingly.com'
+  end
+
   it 'strikingly.com' do
     domain = 'strikingly.com'
     err, rsp = WhoisService.query(domain)
@@ -20,12 +33,6 @@ describe WhoisService do
     rsp['nameservers'].length.should > 0
   end
 
-  it 'www.www.strikingly.com' do
-    url = 'www.www.strikingly.com'
-    err, rsp = WhoisService.query(url)
-    err.should_not be_nil
-    rsp.should eq({})
-  end
 
   it 'empty' do
     url = ''

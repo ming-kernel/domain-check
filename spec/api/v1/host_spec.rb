@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe "host api" do
+  endpoint = "api/v1/host/%s"
+
   it 'google.com' do
-    get 'api/v1/host/google.com'
+    get(endpoint % 'google.com')
     response.should be_success
     json['response']['cname'].length.should == 0
     json['response']['a'].length > 0
@@ -11,7 +13,7 @@ describe "host api" do
   end
 
   it 'www.google.com' do
-    get 'api/v1/host/www.google.com'
+    get(endpoint % 'www.google.com')
     response.should be_success
     json['response']['cname'].length.should == 0
     json['response']['a'].length.should > 0
@@ -20,12 +22,12 @@ describe "host api" do
   end
 
   it 'dijfoifkskfjjdoijfisjdklfnksljdfkljs.com' do
-    get 'api/v1/host/dijfoifkskfjjdoijfisjdklfnksljdfkljs.com'
+    get(endpoint % 'dijfoifkskfjjdoijfisjdklfnksljdfkljs')
     expect(response).to be_not_found
   end
 
   it 'empty' do 
-    get "api/v1/host/''"
+    get(endpoint % "\'\'")
     expect(response).to be_not_found
   end
  

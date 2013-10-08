@@ -1,4 +1,12 @@
+**ruby-2.0.0-p247**
+
+
+**Rails 4.0.0**
+
+
 demo: 
+
+http://domain-check.herokuapp.com/api/v1/whois/news.sina.com.cn
 
 http://domain-check.herokuapp.com/api/v1/whois/strikingly.com
 
@@ -8,11 +16,10 @@ http://domain-check.herokuapp.com/api/v1/host/strikingly.com
 
 http://domain-check.herokuapp.com/api/v1/host/www.strikingly.com
 
+####Notes on "whois":
 
-**ruby-2.0.0-p247**
+I assume that domain like 'news.sina.com.cn' is a valid **whois** query as documented in google doc.
 
-
-**Rails 4.0.0**
 
 ###REST API v1 Resources
 
