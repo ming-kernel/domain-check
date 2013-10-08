@@ -17,23 +17,23 @@ class HostService
     rsp = {}
     resolver = Resolv::DNS.new
     
+    # cname sorted by name
+    rsp['cname'] = []
+    cname = resolver.getresources url, Resolv::DNS::Resource::IN::CNAME
+    cname.sort! {|x, y| x.name.to_s <=> y.name.to_s }
+    cname.each do |c|
+      rsp['cname'] << c.name.to_s
+
+    end
+
     # A record sorted by address name
+    # do not fetch A record if cname exists 
     rsp['a'] = []
-    unless url.start_with?('www.')
+    if rsp['cname'].length == 0
       a = resolver.getresources url, Resolv::DNS::Resource::IN::A
       a.sort! {|x, y| x.address.to_s <=> y.address.to_s }
       a.each do |x|
         rsp['a'] << x.address.to_s
-      end
-    end
-
-    # cname sorted by name
-    rsp['cname'] = []
-    if url.start_with?('www.')
-      cname = resolver.getresources url, Resolv::DNS::Resource::IN::CNAME
-      cname.sort! {|x, y| x.name.to_s <=> y.name.to_s }
-      cname.each do |c|
-        rsp['cname'] << c.name.to_s
       end
     end
 

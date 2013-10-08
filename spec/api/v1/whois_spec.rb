@@ -1,19 +1,22 @@
 require 'spec_helper'
 
 describe "whois api" do
-  it 'google.com success' do
+
+  it 'google.com' do
     get 'api/v1/whois/google.com'
-    expect(response).to be_success
+    response.should be_success
+    json['response']['domain'].should == 'google.com'
+    json['response']['nameservers'].length.should > 0
   end
 
   it 'dijfoifkskfjjdoijfisjdklfnksljdfkljs.com' do
     get 'api/v1/whois/dijfoifkskfjjdoijfisjdklfnksljdfkljs.com'
-    expect(response).to be_not_found
+    response.should be_not_found
   end
 
-  it 'null url ' do 
+  it 'empty' do 
     get "api/v1/whois/''"
-    expect(response).to be_not_found
+    response.should be_not_found
   end
 
   

@@ -18,7 +18,7 @@ class WhoisService
       rsp['registrar'] = r.registrar.name   
       [nil, rsp]
     else
-      ['InvalidDomain', rsp]
+      ['InvalidDomain', {}]
     end
   end
 
