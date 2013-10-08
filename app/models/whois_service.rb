@@ -2,6 +2,8 @@ class WhoisService
   def self.query(domain)
     domain = domain[4..-1] if domain.start_with?('www.')
     rsp = {}
+
+    # confirm to the 'whois' command line to not do referral
     c = Whois::Client.new(referral: false)
     begin
       r = c.lookup(domain)  
@@ -14,6 +16,8 @@ class WhoisService
     r.nameservers.each do |nameserver|
       rsp['nameservers'] << nameserver.name
     end
+
+    # assume domain invalid if registrar is nil
     if r.registrar
       rsp['registrar'] = r.registrar.name   
       [nil, rsp]

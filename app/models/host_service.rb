@@ -7,17 +7,11 @@ class HostService
     rescue Resolv::ResolvError => e
       return ["#{e}", {}]  
     end
-    
-    if url.start_with?('www.') 
-      domain = url[4..-1]
-    else
-      domain = url
-    end
-
+  
     rsp = {}
     resolver = Resolv::DNS.new
     
-    # cname sorted by name
+    # 'cname' sorted by name
     rsp['cname'] = []
     cname = resolver.getresources url, Resolv::DNS::Resource::IN::CNAME
     cname.sort! {|x, y| x.name.to_s <=> y.name.to_s }
@@ -26,7 +20,7 @@ class HostService
 
     end
 
-    # A record sorted by address name
+    # 'A' record sorted by address name
     # do not fetch A record if cname exists 
     rsp['a'] = []
     if rsp['cname'].length == 0
@@ -45,7 +39,14 @@ class HostService
       rsp['mx'] << m.exchange.to_s
     end
 
+    # delete www prefix
+    if url.start_with?('www.') 
+      domain = url[4..-1]
+    else
+      domain = url
+    end
     rsp['domain'] = domain
     [nil, rsp]
+
   end
 end
