@@ -40,11 +40,7 @@ class HostService
     end
 
     # delete www prefix
-    if url.start_with?('www.') 
-      domain = url[4..-1]
-    else
-      domain = url
-    end
+    domain = Domain.name_to_root_domain(url)
     rsp['domain'] = domain
     [nil, rsp]
 

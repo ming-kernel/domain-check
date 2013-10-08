@@ -2,18 +2,6 @@ require 'spec_helper'
 
 describe WhoisService do
 
-  it 'news.sina.com.cn ==> sina.com.cn' do
-    name = 'news.sina.com.cn'
-    domain = WhoisService.root_domain(name)
-    domain.should == 'sina.com.cn'
-  end
-
-  it 'www.strikingly.com ==> strikingly.com' do
-    name = 'www.strikingly.com'
-    domain = WhoisService.root_domain(name)
-    domain.should == 'strikingly.com'
-  end
-
   it 'strikingly.com' do
     domain = 'strikingly.com'
     err, rsp = WhoisService.query(domain)

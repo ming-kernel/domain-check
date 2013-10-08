@@ -31,13 +31,6 @@ describe "whois api" do
   it 'news.sina.com.cn and www.sina.com.cn' do
     get(endpoint % 'news.sina.com.cn')
     response.should be_success
-    r1 = json['response']
-
-    get(endpoint % 'www.sina.com.cn')
-    response.should be_success
-    r2 = json['response']
-    r1.should eq(r2)
-
   end
 
   it 'empty' do 
