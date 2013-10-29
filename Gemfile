@@ -43,6 +43,7 @@ gem 'rspec-rails', group: :test
 gem 'rails_12factor', group: :production
 
 gem 'actionpack-action_caching'
+gem 'sidekiq'
 gem 'newrelic_rpm'
 
 # Use unicorn as the app server

@@ -1,6 +1,8 @@
 class WhoisService
 
   def self.query(name)
+    WhoisWorker.perform_async('bob', 5)
+    
     domain = Domain.name_to_root_domain(name)
     return ['InvalidDomain', {}] if !domain
 
