@@ -34,6 +34,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :assets do
+  gem 'turbo-sprockets-rails3'
+end
+
 gem 'whois'
 gem 'rspec-rails', group: :test
 gem 'rails_12factor', group: :production

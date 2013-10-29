@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order('created_at DESC')
+    @posts = Post.all
   end
 
   # GET /posts/1
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        expire_action :action => [index, show]
+        expire_action :action => ['index', 'show']
 
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
-    expire_action :action => [index, show]
+    expire_action :action => ['index', 'show']
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :no_content }
