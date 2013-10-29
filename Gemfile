@@ -43,7 +43,7 @@ gem 'rspec-rails', group: :test
 gem 'rails_12factor', group: :production
 
 gem 'actionpack-action_caching'
-gem 'redis' 
+gem 'redis'
 gem 'sidekiq'
 gem 'newrelic_rpm'
 
