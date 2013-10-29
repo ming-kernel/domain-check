@@ -1,18 +1,20 @@
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  database: ming_strikingly_dev
+  host: localhost
   pool: 5
   timeout: 5000
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: postgresql
+  database: ming_strikingly_test
+  host: localhost
   pool: 5
   timeout: 5000
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: myapp_production
+  database: ming_strikingly_prod
   pool: 5
   username: myapp
   password:

@@ -16,10 +16,6 @@ http://domain-check.herokuapp.com/api/v1/host/strikingly.com
 
 http://domain-check.herokuapp.com/api/v1/host/www.strikingly.com
 
-####Notes on "whois":
-
-I assume that domain like 'news.sina.com.cn' is a valid **whois** query as documented in google doc. (it's not a valid query in command line **whois**)
-
 
 ###REST API v1 Resources
 
